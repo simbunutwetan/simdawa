@@ -1,0 +1,19 @@
+# SimDAWA - Versi 1.2
+
+Aplikasi Data Penduduk yang dikembangkan untuk mendukung transparansi dan efisiensi di **Pemdes Bunutwetan**. Proyek ini merupakan bagian dari pengembangan ekosistem digital desa.
+
+## 🚀 Akses Aplikasi
+Untuk menjalankan aplikasi, silakan klik tautan resmi di bawah ini:
+👉 **[Link Aplikasi Bunut Tracking](https://script.google.com/macros/s/AKfycbzASBbH_MbdNFcws62JU69WIuWC6Q1nV2WuoAnorVlAe7jd3elSlqpklNm6mSikGNlCbQ/exec)**
+
+---
+
+## 🛠️ Fitur Utama
+- **Statistik Data Penduduk:** Memantau data secara langsung melalui integrasi Google Sheets.
+- **Keamanan Data:** Terintegrasi dengan sistem otentikasi Google.
+
+## 🧑‍💻 Pengembang
+Dikembangkan sebagai bagian dari inisiatif digitalisasi Desa Bunutwetan.
+
+---
+*Catatan: Jika mengalami kendala akses, pastikan Anda telah login menggunakan akun yang telah diberikan izin akses.*
