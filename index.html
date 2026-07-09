@@ -4,38 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SimDAWA | Kelurahan Bunut Wetan</title>
-    </head>
+    <style>
+        /* Loading Screen Sederhana sebelum aplikasi termuat */
+        #loading { display: flex; justify-content: center; align-items: center; height: 100vh; font-family: sans-serif; color: #4318ff; background: #f4f7fe; font-weight: bold; }
+    </style>
+</head>
 <body>
 
-    <div style="padding: 20px; max-width: 400px; margin: auto;">
-        <h2>Form Data Warga</h2>
-        <input type="text" id="namaWarga" placeholder="Nama Lengkap" required><br><br>
-        <input type="text" id="nikWarga" placeholder="NIK" required><br><br>
-        <button onclick="simpanData()">Simpan ke Spreadsheet</button>
-    </div>
+    <div id="loading">Sedang memuat sistem SimDAWA...</div>
+    <div id="app-root"></div>
 
     <script>
-        function simpanData() {
-            var nama = document.getElementById("namaWarga").value;
-            var nik = document.getElementById("nikWarga").value;
+        // URL Google Apps Script Anda yang berakhiran /exec
+        const gasUrl = "https://script.google.com/macros/s/AKfycbzASBbH_MbdNFcws62JU69WIuWC6Q1nV2WuoAnorVlAe7jd3elSlqpklNm6mSikGNlCbQ/exec";
 
-            // URL Google Script Anda (Backend)
-            var urlApi = "https://script.google.com/macros/s/AKfycbzASBbH_MbdNFcws62JU69WIuWC6Q1nV2WuoAnorVlAe7jd3elSlqpklNm6mSikGNlCbQ/exec";
-
-            // Mengirim data diam-diam di belakang layar
-            fetch(urlApi, {
-                method: "POST",
-                body: JSON.stringify({ nama: nama, nik: nik })
+        // Mengambil kode HTML dari Google Apps Script secara diam-diam
+        fetch(gasUrl)
+            .then(response => response.text())
+            .then(html => {
+                // Menghilangkan tulisan loading
+                document.getElementById('loading').style.display = 'none';
+                // Menyuntikkan seluruh kode HTML SimDAWA langsung ke halaman GitHub
+                document.getElementById('app-root').innerHTML = html;
+                
+                // Menjalankan ulang script bawaan jika ada di dalam HTML yang disedot
+                const scripts = document.getElementById('app-root').querySelectorAll('script');
+                scripts.forEach(script => {
+                    const newScript = document.createElement('script');
+                    if (script.src) {
+                        newScript.src = script.src;
+                    } else {
+                        newScript.text = script.text;
+                    }
+                    document.body.appendChild(newScript);
+                });
             })
-            .then(response => response.json())
-            .then(hasil => {
-                if(hasil.status === "sukses") {
-                    alert("Mantap! " + hasil.pesan);
-                } else {
-                    alert("Gagal: " + hasil.pesan);
-                }
+            .catch(err => {
+                document.getElementById('loading').innerText = "Gagal memuat aplikasi. Silakan refresh halaman.";
+                console.error(err);
             });
-        }
     </script>
 </body>
 </html>
