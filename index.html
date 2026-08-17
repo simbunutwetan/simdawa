@@ -2,17 +2,34 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Membuka SimDAWA...</title>
-    
-    <script>
-        // MASUKKAN LINK GOOGLE SITES ANDA DI SINI
-        var linkGoogleSites = "https://script.google.com/macros/s/AKfycbzASBbH_MbdNFcws62JU69WIuWC6Q1nV2WuoAnorVlAe7jd3elSlqpklNm6mSikGNlCbQ/exec";
-        
-        window.location.replace(linkGoogleSites);
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SIMDAWA</title>
+    <style>
+        /* Menghilangkan semua margin dan scrollbar di level paling luar */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            background-color: #059669; /* Warna hijau tema KasKita */
+        }
+
+        /* Memaksa Iframe mengisi ruang yang tersisa dengan sempurna */
+        iframe {
+            flex-grow: 1;
+            border: none;
+            width: 100%;
+            height: 100%;
+            /* Penting untuk kelancaran scroll di iPhone/iOS */
+            -webkit-overflow-scrolling: touch;
+            overflow-y: auto;
+        }
+    </style>
 </head>
-<body style="background-color: #f4f7fe; font-family: sans-serif; text-align: center; padding-top: 20vh;">
-    <h3 style="color: #4318ff;">Menghubungkan ke Server Aman SimDAWA...</h3>
+<body>
+    <iframe src="https://script.google.com/macros/s/AKfycbzASBbH_MbdNFcws62JU69WIuWC6Q1nV2WuoAnorVlAe7jd3elSlqpklNm6mSikGNlCbQ/exec"></iframe>
 </body>
 </html>
